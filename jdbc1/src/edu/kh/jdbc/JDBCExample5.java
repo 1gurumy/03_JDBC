@@ -93,7 +93,7 @@ public class JDBCExample5 {
 			conn.setAutoCommit(false);
 			
 			// 6. SQL(INSERT) 수행 후 결과(int) 반환 받기
-			// executeQuery() : SELECT 수행, ResultSet 반환
+			// executeQuery() : SELECT 수행 후 ResultSet 반환
 			// executeUpdate() : DML 수행, 결과 행의 갯수(int) 반환
 			// -> 보통 DML 수행 실패 시 0, 성공 시 0 초과된 값이 반환된다.
 			

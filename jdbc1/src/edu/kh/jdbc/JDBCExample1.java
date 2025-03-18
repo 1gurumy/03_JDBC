@@ -54,6 +54,7 @@ public class JDBCExample1 {
 		// 2-1) Oracle JDBC Driver 객체를 메모리에 로드해두기
 		 try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// oracle.jdbc.driver.OracleDriver -> Oracle 데이터베이스와 연결하기 위한 JDBC 드라이버 클래스
 			// 괄호 안에 오타있을 시 ClassNotFoundException 예외 발생함
 			// Class.forName("패키지명 + 클래스명"); 
 			// Class.forName() 메서드는 ()안의 해당 클래스를 읽어 메모리에 적재(로드)하는 역할이다.

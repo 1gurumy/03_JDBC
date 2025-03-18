@@ -17,7 +17,7 @@ public class JDBCExample6 {
 		// 2. commit/rollback 처리하기
 		// 3. 성공 시 "수정 성공!" 출력 / 실패 시 "아이디 또는 비밀번호 불일치" 출력
 		
-		//1. JDBS 객체를 참조할 참조용 변수 선언하기 
+		//1. JDBS 객체를 참조할 참조용 변수 선언하기 + 키보드 입력용 객체 sc 선언하기
 		Scanner sc = null;
 		
 		Connection conn = null;
@@ -45,23 +45,24 @@ public class JDBCExample6 {
 			System.out.print("비밀번호 입력 : ");
 			String pw = sc.nextLine();
 			
-			System.out.print("이름 입력 : ");
+			System.out.print("수정할 이름 입력 : ");
 			String name = sc.nextLine();
 			
 			
 			String sql = """
 					UPDATE TB_USER 
-					SET USER_NAME
-					WHERE USER_ID = ? AND USER_PW = ?
+					SET USER_NAME = ?
+					WHERE USER_ID = ?
+					AND USER_PW = ?
 					""";
 			
 		// 4. PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			
 		// 5. ? 위치홀더 자리에 알맞은 값 대입
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, name);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, pw);
 			
 		// +  AutoCommit(SQL 수행될 때마다 자동으로 커밋되는 것)끄기!	
 			conn.setAutoCommit(false);
