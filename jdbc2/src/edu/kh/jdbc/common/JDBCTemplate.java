@@ -59,10 +59,7 @@ public class JDBCTemplate {
 			Properties prop = new Properties();
 			
 			
-			
-			
-			
-		// 2. Properties 가 제공하는 메서드를 이용해서 driver.xml 파일 내용을 읽어오기
+			// 2. Properties 가 제공하는 메서드를 이용해서 driver.xml 파일 내용을 읽어오기
 			String filePath = "driver.xml";
 			// driver.xml파일(DB연결 정보를 담고있는 파일) 경로를 변수 filePath에 저장.
 			
