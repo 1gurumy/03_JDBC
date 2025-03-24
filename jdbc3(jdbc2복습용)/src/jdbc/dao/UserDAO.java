@@ -20,8 +20,19 @@ public class UserDAO {
 				VALUES(SEQ_USER_NO.NEXTVAL, ?, ?, ?, DEFAULT)
 				""";
 		
-		PreparedStatement pstmt = JDBCTemplate.getConnection(sql);
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, "userId");
+			pstmt.setString(2, "userPw");
+			pstmt.setString(3, "userName");
+			
+		} catch (Exception e) {
+			System.out.println("회원가입 진행 중 예외 발생..");
+			e.printStackTrace();
 		
+		}
 		
 		return 0;
 	}
