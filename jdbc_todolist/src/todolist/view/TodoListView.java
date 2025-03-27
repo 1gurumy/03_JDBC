@@ -128,20 +128,37 @@ public class TodoListView {
 	}
 
 
-	/** 2. 로그인 
+	/** 2. 로그인 view
+	 * @throws Exception 
 	 * 
 	 */
-	private void logIn() {
+	private void logIn() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("\n===로그인 페이지입니다.===\n");
+		
+		System.out.print("id : ");
+		String id = sc.next();
+		
+		System.out.print("pw : ");
+		String pw = sc.next();
+		
+		// 1행의 조회 결과를 담기 위해서 Member 객체 1개 사용
+		Member member = service.logIn(id, pw);
+	
+		if(member == null) {
+			System.out.println("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+		} else System.out.println("로그인 성공");
+		
+		
 		
 	}
 
 
-	/** 1. 회원 가입 
+	/** 1. 회원 가입 view
 	 * 
 	 */
-	private void signUP() {
-		System.out.println("=====회원 가입 페이지 입니다.=====");
+	private void signUP() throws Exception {
+		System.out.println("\n=====회원 가입 페이지 입니다.=====\n");
 		
 		System.out.print("이름 : ");
 		String name = sc.next();
@@ -152,17 +169,26 @@ public class TodoListView {
 		System.out.print("pw : ");
 		String pw = sc.next();
 		
-		Member member1 = new Member();
-		member1.setMemberName(name);
-		member1.setMemberId(id);
-		member1.setMemberPw(pw);
+		System.out.print("pw 확인 : ");
+		String pw2 = sc.next();
 		
-		int result = service.signUp(member1);
-		
+		if(pw.equals(pw2)) {
+			Member member = new Member();
+			member.setMemberName(name);
+			member.setMemberId(id);
+			member.setMemberPw(pw);
+			
+			int result = service.signUp(member);
+			if(result > 0) System.out.println("회원가입이 완료되었습니다.");
+			else System.out.println("회원가입 실패");
+			
+			
+		} else {
+			System.out.println("비밀번호가 일치하지 않습니다.");
+			return;
+		}
 		
 	}
-
-
 
 	
 }
