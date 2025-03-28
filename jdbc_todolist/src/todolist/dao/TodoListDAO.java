@@ -37,6 +37,10 @@ public class TodoListDAO {
 			
 			result = pstmt.executeUpdate();
 			
+			if(member.getMemberId().equals(rs.getString("MEMBER_ID")) {
+				
+			}
+			
 		} finally {
 			close(pstmt);
 		}
